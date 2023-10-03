@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { useDispatch } from "react-redux";
-import { addCart,  } from "../redux/action";
+import { addCart } from "../redux/action";
 
 
 function Products() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
-    const dispatch=useDispatch();
+
+    const dispatch = useDispatch();
     const addProduct =(product)=>{
         dispatch(addCart(product));
     }
@@ -44,7 +45,7 @@ function Products() {
         );
     };
 
-    const ShowResult = () => {
+    const ShowProduct = () => {
         return (
             <>
                 <div className="col-md-6">
@@ -70,7 +71,7 @@ function Products() {
         <div>
             <div className="container py-5 ">
                 <div className="row py-4">
-                    {loading ? <Loading /> : <ShowResult />}
+                    {loading ? <Loading /> : <ShowProduct />}
                 </div>
             </div>
         </div>
